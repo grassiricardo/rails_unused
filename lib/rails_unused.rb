@@ -32,7 +32,9 @@ module RailsUnused
 
   def self.find_unused_controllers
     unused = []
-    Dir.glob('app/controllers/**/*_controller.rb').each do |file|
+    files = Dir.glob('app/controllers/**/*_controller.rb')
+    print "Analisando controllers:\n"
+    files.each do |file|
       content = File.read(file)
       next unless content =~ /class\s+([A-Za-z0-9_:+]+)/
 
@@ -41,14 +43,20 @@ module RailsUnused
       routes_text = File.exist?('config/routes.rb') ? File.read('config/routes.rb') : ''
       base_name = controller_class.gsub(/Controller$/, '')
       unused << controller_class unless routes_text.include?("#{base_name.downcase}#")
+
+      print '.'
+      $stdout.flush
     end
+    puts " (#{files.size} arquivos analisados)"
     unused
   end
 
   def self.find_unused_models
     unused = []
     all_files = Dir.glob('{app,config,lib}/**/*.rb')
-    Dir.glob('app/models/**/*.rb').each do |file|
+    files = Dir.glob('app/models/**/*.rb')
+    print "Analisando models:\n"
+    files.each do |file|
       content = File.read(file)
       next unless content =~ /class\s+([A-Za-z0-9_:+]+)/
 
@@ -65,14 +73,20 @@ module RailsUnused
         end
       end
       unused << model_class unless reference_found
+
+      print '.'
+      $stdout.flush
     end
+    puts " (#{files.size} arquivos analisados)"
     unused
   end
 
   def self.find_unused_services
     unused = []
     all_files = Dir.glob('{app,config,lib}/**/*.rb')
-    Dir.glob('app/services/**/*.rb').each do |file|
+    files = Dir.glob('app/services/**/*.rb')
+    print "Analisando services:\n"
+    files.each do |file|
       content = File.read(file)
       next unless content =~ /class\s+([A-Za-z0-9_:+]+)/
 
@@ -89,7 +103,11 @@ module RailsUnused
         end
       end
       unused << service_class unless reference_found
+
+      print '.'
+      $stdout.flush
     end
+    puts " (#{files.size} arquivos analisados)"
     unused
   end
 end
