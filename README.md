@@ -1,4 +1,6 @@
-# rails_unused
+![Captura_de_Tela_2025-04-14_às_22 39 58-removebg-preview](https://github.com/user-attachments/assets/f9290071-4db4-47d5-acb9-c0ae21ab1176)
+
+# Rails Unused
 
 Dead code analyzer for Ruby on Rails projects.  
 Simple CLI tool that finds unused controllers, models, and services in your Rails app.
