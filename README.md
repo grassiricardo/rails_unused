@@ -72,3 +72,8 @@ See [ROADMAP.md](ROADMAP.md) for future improvements.
 ## Contributing
 
 Pull requests are welcome!
+
+## Badge
+
+[![No Unused Code](https://img.shields.io/badge/unused%20code-none-success?style=for-the-badge&logo=rubyonrails&logoColor=white)](https://rubygems.org/gems/rails_unused)
+
