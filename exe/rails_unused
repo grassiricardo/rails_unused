@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+# Este executável permite rodar a análise via CLI: "bundle exec rails_unused"
+
+require 'rails_unused'
+
+RailsUnused.run
